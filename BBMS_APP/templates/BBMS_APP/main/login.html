@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Login Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+	        background: url('https://wallpapershome.com/images/pages/pic_h/26028.jpeg') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .login-box {
+            width: 400px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	        background-color: rgba(255, 255, 255, 0.5); /* Transparent white background */
+        }
+
+        .login-box h2 {
+            text-align: center;
+        }
+
+        .login-box label {
+            font-weight: bold;
+        }
+
+        .login-box .form-check {
+            margin-bottom: 15px;
+        }
+
+        .login-box .signup-link {
+            color: #007bff; /* Blue text */
+        }
+
+        .home-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #007bff; /* Blue background color */
+            color: #fff; /* White text color */
+            padding: 8px 16px; /* Add padding for better appearance */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Add border-radius for rounded corners */
+            text-decoration: none; /* Remove underline */
+        }
+
+        .home-button:hover {
+            background-color: #0056b3; /* Darker blue background color on hover */
+        }
+
+    </style>
+</head>
+<body>
+    <a href="{% url 'index' %}" class="btn btn-secondary home-button">Home</a>
+    <form method="post" action="{% url 'login' %}" class="login-box">
+        {% csrf_token %}
+        <h2>Login</h2>
+        <!-- Success/ Error Message -->
+        {% if messages %}
+            {% for message in messages %}
+                {% if 'password_login_error' in message.tags %}
+                    <div class="email-error-message">
+                        <div class="alert alert-danger" role="alert">
+                            {{ message }}
+                        </div>
+                    </div>
+                {% endif %}
+                {% if 'user_login_error' in message.tags %}
+                    <div class="email-error-message">
+                        <div class="alert alert-danger" role="alert">
+                            {{ message }}
+                        </div>
+                    </div>
+                {% endif %}
+                {% if 'donor_login_error' in message.tags %}
+                    <div class="email-error-message">
+                        <div class="alert alert-danger" role="alert">
+                            {{ message }}
+                        </div>
+                    </div>
+                {% endif %}
+                {% if 'email_login_error' in message.tags %}
+                    <div class="email-error-message">
+                        <div class="alert alert-danger" role="alert">
+                            {{ message }}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        <!-- Success/ Error Message -->
+        <!-- Add the three radio buttons here -->
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <div class="form-check">
+                    <input type="radio" name="user_type" id="admin" value="admin" class="form-check-input" onclick="updateInput('admin'), enableInputs()">
+                    <label class="form-check-label" for="admin">Admin</label>
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <div class="form-check">
+                    <input type="radio" name="user_type" id="donor" value="donor" class="form-check-input" onclick="updateInput('donor'), enableInputs()">
+                    <label class="form-check-label" for="donor">Donor</label>
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <div class="form-check">
+                    <input type="radio" name="user_type" id="user" value="user" class="form-check-input" onclick="updateInput('user'), enableInputs()">
+                    <label class="form-check-label" for="user">User</label>
+                </div>
+            </div>
+        </div>
+        <!-- End the three radio buttons here -->
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" name="username" class="form-control" id="username" placeholder="Enter your email/username" required disabled>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" name="password" class="form-control" id="password" placeholder="Enter your password" required disabled>
+        </div>
+        <p class="text-right"><a href="#" class="forgot-password-link">Forgot Password?</a></p>
+        <button type="submit" class="btn btn-primary btn-block" disabled>Login</button>
+        <p class="text-center mt-3">Don't have an account? <a href="{% url 'CustomerRegister' %}" class="signup-link">Sign Up here</a>.</p>
+    </form>
+
+    {% block content %}
+    {% endblock %}
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript to update input based on selected radio button -->
+    <script>
+        function updateInput(userType) {
+            var usernameInput = document.getElementById('username');
+            switch (userType) {
+                case 'admin':
+                    usernameInput.placeholder = 'Admin username';
+                    break;
+                case 'donor':
+                    usernameInput.placeholder = 'Donor username';
+                    break;
+                case 'user':
+                    usernameInput.placeholder = 'Enter your email';
+                    break;
+                default:
+                    usernameInput.placeholder = 'Enter your email/username';
+            }
+            usernameInput.disabled = false; // Enable the input once a radio button is selected
+        }
+    </script>
+    <!-- script to disable if radio button is not selected -->
+    <script>
+        function enableInputs() {
+            // Enable input fields and login button when a radio button is selected
+            document.getElementById("username").disabled = false;
+            document.getElementById("password").disabled = false;
+            document.querySelector('button[type="submit"]').disabled = false;
+        }
+    </script>
+    <!-- Script to remove messages after 3 seconds -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Select all elements with the class 'alert' inside 'email-success-message' and 'email-error-message'
+            const alerts = document.querySelectorAll('.email-success-message .alert, .email-error-message .alert');
+            
+            // Loop through each alert element and remove it after 3 seconds
+            alerts.forEach(function (alert) {
+                setTimeout(function () {
+                    alert.parentElement.remove(); // Remove the parent element containing the alert
+                }, 3000); // Set timeout for 3 seconds
+            });
+        });
+    </script>
+</body>
+</html>

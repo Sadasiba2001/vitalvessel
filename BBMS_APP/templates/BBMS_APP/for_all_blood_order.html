@@ -1,0 +1,267 @@
+{% extends 'BBMS_APP/base.html' %}
+{% block title %}Home - My Website{% endblock %}
+
+
+{% block content %}
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+      <h2><b>Blood Order</b></h2>
+      <ol>
+        <li><a href="{% url 'Home' %}">Home</a></li>
+        <li>Blood Order</li>
+      </ol>
+    </div>
+  </div>
+</section>
+<!-- End Breadcrumbs -->
+
+<!-- Blood Order Product Items -->
+<section id="blood-products" class="blood-products">
+  <div class="container">
+    <div class="section-title">
+      <h2>Blood Products</h2>
+      <p>Check out our available products and prices:</p>
+    </div>
+
+    <!-- First row  -->
+    <div class="row">
+      <div class="col-md-3">
+        <ul class="list-unstyled">
+          <li class="media">
+            <img src="/static/BBMS_APP/assets/img/blood_order/A +ve.jpg" class="mr-3" alt="Product1"
+              style="max-width: 100px;">
+            <div class="media-body">
+              <h5 class="mt-0 mb-1">A +ve Blood Bag</h5>
+              <p>&#8377;260/-</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul class="list-unstyled">
+          <li class="media">
+            <img src="/static/BBMS_APP/assets/img/blood_order/B +ve.png" class="mr-3" alt="Product2"
+              style="max-width: 100px;">
+            <div class="media-body">
+              <h5 class="mt-0 mb-1">B +ve Blood Bag</h5>
+              <p>&#8377;255/-</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul class="list-unstyled">
+          <li class="media">
+            <img src="/static/BBMS_APP/assets/img/blood_order/O +ve.jpg" class="mr-3" alt="Product3"
+              style="max-width: 100px;">
+            <div class="media-body">
+              <h5 class="mt-0 mb-1">O +ve Blood Bag</h5>
+              <p>&#8377;250/-</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul class="list-unstyled">
+          <li class="media">
+            <img src="/static/BBMS_APP/assets/img/blood_order/AB +ve.jpeg" class="mr-3" alt="Product4"
+              style="max-width: 100px;">
+            <div class="media-body">
+              <h5 class="mt-0 mb-1">AB +ve Blood Bag</h5>
+              <p>&#8377;270/-</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- First Column end -->
+
+    <!-- Second row -->
+    <div class="row">
+      <div class="col-md-3">
+        <ul class="list-unstyled">
+          <li class="media">
+            <img src="/static/BBMS_APP/assets/img/blood_order/A -ve.jpg" class="mr-3" alt="Product5"
+              style="max-width: 100px;">
+            <div class="media-body">
+              <h5 class="mt-0 mb-1">A -ve Blood Bag</h5>
+              <p>&#8377;284/-</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul class="list-unstyled">
+          <li class="media">
+            <img src="/static/BBMS_APP/assets/img/blood_order/B -ve.jpg" class="mr-3" alt="Product6"
+              style="max-width: 100px;">
+            <div class="media-body">
+              <h5 class="mt-0 mb-1">B -ve Blood Bag</h5>
+              <p>&#8377;291/-</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul class="list-unstyled">
+          <li class="media">
+            <img src="/static/BBMS_APP/assets/img/blood_order/O -ve.jpg" class="mr-3" alt="Product7"
+              style="max-width: 100px;">
+            <div class="media-body">
+              <h5 class="mt-0 mb-1">O -ve Blood Bag</h5>
+              <p>&#8377;299/-</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul class="list-unstyled">
+          <li class="media">
+            <img src="/static/BBMS_APP/assets/img/blood_order/AB -ve.jpg" class="mr-3" alt="Product8"
+              style="max-width: 100px;">
+            <div class="media-body">
+              <h5 class="mt-0 mb-1">AB -ve Blood Bag</h5>
+              <p>&#8377;275/-</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Blood Order Product Items Ends Here -->
+
+
+<!-- Blood Order Form -->
+<form method="post" action="{% url 'customerBloodOrder' %}">
+  {% csrf_token %}
+  <section id="blood-order" class="blood-order">
+    <div class="container">
+      <div class="section-title">
+        <h2>Blood Order Form</h2>
+        <p>Please fill out the form below to place your blood order.</p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <form action="#" method="post" role="form" class="php-email-form">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="name" class="mb-1 text-light">Name:</label>
+                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="email" class="mb-1 text-light">Email:</label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="number" class="mb-1 text-light">Phone Number:</label>
+                <input type="text" class="form-control" name="phone" id="phone" placeholder="Your Phone" required>
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="blood_group" class="mb-1 text-light">Blood group:</label>
+                <select class="form-control form-control-sm" id="blood_group" name="blood_group" required>
+                  <option value="">Select blood group</option>
+                  {% for i in bloods %}
+                  <option value="{{ i.blood_group_name }}">{{ i.blood_group_name }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="number" class="mb-1 text-light">Blood-bag packets:</label>
+                <input type="number" class="form-control" name="blood_bag" id="blood_bag"
+                  placeholder="Packets (max limit: 2)" required min="0" max="2" onchange="calculatePrice()">
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="blood_group" class="mb-1 text-light">Price:</label>
+                <div id="totalPrice" value="totalPrice" name="totalPrice"></div>
+                <input type="hidden" id="priceInput" name="price" value="">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="district" class="mb-1 text-light">District:</label>
+                <select class="form-control form-control-sm" id="district" name="district" required>
+                  <option value="">Select district</option>
+                  {% for i in districts %}
+                  <option value="{{ i.district_name }}">{{ i.district_name }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="address" class="mb-1 text-light">Address:</label>
+                <input type="text" class="form-control" name="address" id="address" placeholder="Medical Center Address"
+                  required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 form-group">
+                <label for="Extra message" class="mb-1 text-light">Message(optional):</label>
+                <textarea class="form-control" name="message" rows="5" id="additional" name="additional"
+                  placeholder="Additional Message (Optional)"></textarea>
+              </div>
+            </div>
+            </br>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary">Place Order</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</form>
+<!-- End Blood Order Form -->
+<script>
+  // Function to calculate and update price
+  function calculatePrice() {
+    var bloodGroup = document.getElementById("blood_group").value;
+    var numPackets = parseInt(document.getElementById("blood_bag").value);
+    var prices = {
+      "A POSITIVE": 1,
+      "B POSITIVE": 1,
+      "O POSITIVE": 1,
+      "AB POSITIVE": 1,
+      "A NEGATIVE": 2,
+      "B NEGATIVE": 2,
+      "O NEGATIVE": 2,
+      "AB NEGATIVE": 2
+    };
+    var totalPrice = numPackets * prices[bloodGroup];
+    if (!isNaN(totalPrice)) {
+      document.getElementById("totalPrice").innerHTML = "Total Price: ₹" + totalPrice + "/-";
+      // Update the hidden input field with the calculated price
+      document.getElementById("priceInput").value = totalPrice;
+    }
+  }
+
+  // Call the calculatePrice function initially
+  calculatePrice();
+
+  // Add event listeners to trigger calculation when inputs change
+  document.getElementById("blood_group").addEventListener("change", calculatePrice);
+  document.getElementById("blood_bag").addEventListener("input", calculatePrice);
+</script>
+
+<!-- Script for converting uppercase -->
+<script>
+  // Get the input fields
+  const userNameInput = document.getElementById('name');
+  const addressInput = document.getElementById('address');
+
+  // Add event listeners to input fields
+  userNameInput.addEventListener('input', function () {
+      this.value = this.value.toUpperCase();
+  });
+
+  addressInput.addEventListener('input', function () {
+      this.value = this.value.toUpperCase();
+  });
+</script>
+
+{% endblock %}

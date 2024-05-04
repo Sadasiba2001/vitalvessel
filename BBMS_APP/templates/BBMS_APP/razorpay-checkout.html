@@ -1,0 +1,44 @@
+{% extends 'BBMS_APP/base.html' %}
+{% block title %}Razorpay Checkout{% endblock %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title text-center mb-4">Razorpay Checkout</h1>
+            <h4 class="card-title"><u>Order Details</u></h4>
+            <p class="card-text"><strong>Order ID:</strong> {{ razorpay_order.razorpay_order_id }}</p>
+            <p class="card-text"><strong>Name:</strong> {{ razorpay_order.name }}</p>
+            <p class="card-text"><strong>Email:</strong> {{ razorpay_order.email }}</p>
+            <p class="card-text"><strong>Phone:</strong> {{ razorpay_order.phone }}</p>
+            <p class="card-text"><strong>Blood Group:</strong> {{ razorpay_order.blood_group }}</p>
+            <p class="card-text"><strong>Packets:</strong> {{ razorpay_order.packets }}</p>
+            <p class="card-text"><strong>Amount:</strong> {{ razorpay_order.amount }}(paisa)</p>
+
+
+            <!-- Add more order details as needed -->
+        </div>
+        {% if razorpay_order %}
+        <!-- Rozor Pay code -->
+        <form action="{% url 'razorpay_callback' %}" method="POST">
+            {% csrf_token %}
+            <script
+                src="https://checkout.razorpay.com/v1/checkout.js"
+                data-key="rzp_test_3vxkeO85rNjAVv" 
+                data-amount="{{ razorpay_order.amount }}" 
+                data-currency="INR"
+                data-order_id="{{ razorpay_order.razorpay_order_id }}"
+                data-buttontext="Pay with Razorpay"
+                data-name="VITALVESSEL"
+                data-description="Wear your blood donor badge with pride. Blood connects us all. Be a link in the chain of life. The feeling after donating blood? Proud, grateful, and heroic."
+                data-image="https://imgs.search.brave.com/2LC7sh_rRbWdMXxaE6OFVVDUDXAGcIsvezN2nwR9LNI/rs:fit:860:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAxLzY2LzMzLzAz/LzM2MF9GXzE2NjMz/MDM4OV9KQmVXeGxt/cENrd0piWXhqZVh3/SzlXd3hHOGtYblNN/eC5qcGc"
+                data-prefill.name="{{ razorpay_order.name }}"
+                data-prefill.email="{{ razorpay_order.email }}"
+                data-theme.color="#F37254"
+            ></script>
+            <input type="hidden" custom="Hidden Element" name="hidden"/>
+            </form>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

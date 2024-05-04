@@ -1,0 +1,97 @@
+{% extends 'BBMS_APP/admin/admin_base.html' %}
+{% block title %}Home - My Website{% endblock %}
+
+
+{% block content %}
+
+            <!-- Main Content -->
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <!-- Table -->
+                <form method="post" action="{% url 'AdminBloodBankDetailsPage' %}" autocomplete="off">
+                    {% csrf_token %}
+                    <h1 class="mt-2 text-white d-flex justify-content-between align-items-center bt">
+                        Blood Bank Details
+                        <div class="form-group col-md-4">
+                            <label for="filter"><h6>Filter by:</h6></label>
+                            <input type="text" id="searchInput" name="searchInput" class="form-control" placeholder="Search by district/blood bank">
+                        </div>
+                        <button type="submit" name="delete" class="btn btn-danger">Delete</button>
+                    </h1>
+                    
+                    <!-- Success/ Error Message -->
+                    {% if messages %}
+                        {% for message in messages %}
+                            {% if 'records_delete' in message.tags %}
+                                <div class="email-success-message">
+                                    <div class="alert alert-success" role="alert">
+                                        {{ message }}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    <!-- Success/ Error Message -->
+                    <div class="table-responsive ">
+                        <table class="table table-bordered table-hover table-danger-border table-sm" id="bb_table">
+                            <thead class="text-white thead-dark">
+                                <tr class="border">
+                                    <th class="border" style="width: 10%;">Select</th>
+                                    <th class="border" style="width: 40%;">Blood Bank ID</th>
+                                    <th class="border" style="width: 40%;">Blood Bank Name</th>
+                                    <th class="border" style="width: 50%;">District Name</th>
+                                    <th class="border" style="width: 40%;">Email</th>
+                                    <th class="border" style="width: 40%;">Phone</th>
+                                    <th class="border" style="width: 40%;">Address</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <form method="post" action="{% url 'AdminBloodBankDetailsPage' %}" autocomplete="off">
+                                    {% csrf_token %}
+                                    <!-- Placeholder for table body content -->
+                                    {% for i in blood reversed %}
+                                    <tr class="text-white">
+                                        <!-- Field for checkbox -->
+                                        <td><input type="checkbox" value="{{ i.blood_bank_id }}" name="selected_records"></td>
+                                        <!-- Field for ID -->
+                                        <td>{{ i.blood_bank_id }}</td>
+                                        <!-- Input field for name -->
+                                        <td>{{ i.blood_bank_name }}</td>
+                                        <!-- Input field for name -->
+                                        <td>{{ i.district.district_name }}</td>
+                                        <!-- Input field for name -->
+                                        <td>{{ i.email }}</td>
+                                        <!-- Input field for name -->
+                                        <td>{{ i.mobile }}</td>
+                                        <!-- Input field for name -->
+                                        <td>{{ i.address }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </form>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </main>
+            <!-- Main Content Ends Here-->
+            
+            <script>
+                const searchFun = () => {
+                    let filter = document.getElementById('searchInput').value.toUpperCase(); // Searching input box
+                    let myTable = document.getElementById('bb_table'); // Blood bank details table
+                    let tr = myTable.getElementsByTagName('tr');
+                    for (var i = 0; i < tr.length; i++) {
+                        let tdName = tr[i].getElementsByTagName('td')[2]; // Blood Bank Name column
+                        let tdDistrict = tr[i].getElementsByTagName('td')[3]; // District column
+                        if (tdName && tdDistrict) {
+                            let textValueName = tdName.textContent || tdName.innerText;
+                            let textValueDistrict = tdDistrict.textContent || tdDistrict.innerText;
+                            let matchFound = textValueName.toUpperCase().indexOf(filter) > -1 || textValueDistrict.toUpperCase().indexOf(filter) > -1;
+                            tr[i].style.display = matchFound ? "" : "none";
+                        }
+                    }
+                }
+                // Attach search event listener to the input field
+                document.getElementById('searchInput').addEventListener('keyup', searchFun);
+            </script>
+
+           {% endblock %}

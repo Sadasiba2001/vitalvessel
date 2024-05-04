@@ -1,0 +1,188 @@
+{% extends 'BBMS_APP/base.html' %}
+{% block title %}Home - My Website{% endblock %}
+
+
+{% block content %}
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>About Page</h2>
+          <ol>
+            <li><a href="{% url 'Home' %}">Home</a></li>
+            <li>About</li>
+          </ol>
+        </div>
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        <div class="row content">
+          <div class="col-lg-6">
+            <h2>VITALVESSELS</h2>
+            <h3>Empowering Blood Banks for a Healthier Tomorrow</h3>
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0">
+            <p>
+              VitalVessels enforces Drug & Cosmetic Act, National blood policy standards and guidelines ensuring proper collection & donation, effective management and monitoring the quality and quantity of the donated blood. Considering the national roll out, VitalVessels has been developed with modular and scalable approach with configurable rule based architecture allowing customization to easily incorporate specific requirements from nationwide stakeholders.
+            </p>
+            <ul>
+              <p><b>VitalVessels has six major components for management of the blood donation life cycle: </b></p>
+              <li><i class="ri-check-double-line"></i> The bio metric Donor Management System for identifying, tracking and blocking donors based on donor's health, donation history etc.</li>
+              <li><i class="ri-check-double-line"></i> It provides features such as blood grouping, TTI screening, antibody screening, component preparation etc. as per the defined processes and rules.</li>
+              <li><i class="ri-check-double-line"></i> A centralized Blood Inventory Management System for keeping track of the blood stock across numerous blood banks.</li>
+              <li><i class="ri-check-double-line"></i> Bio-Medical Waste Management System for disposal of discarded blood and other waste generated during this process.</li>
+              <li><i class="ri-check-double-line"></i> Generation of rare blood group donor registries and the generation of regular repeat donors</li>
+              <li><i class="ri-check-double-line"></i> Alert and Notification System</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Team</h2>
+          <p>Our Hardowrking Team</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-6">
+            <div class="member d-flex align-items-start">
+              <div class="pic"><img src="/static/BBMS_APP/assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>BARSHARANI BARIK</h4>
+                <span>Team Leader</span>
+                <p>Fullstack Developer</p>
+                <p>Database Designer</p>
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href=""><i class="ri-instagram-fill"></i></a>
+                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div> 
+
+          <div class="col-lg-6">
+            <div class="member d-flex align-items-start">
+              <div class="pic"><img src="/static/BBMS_APP/assets/img/team/team-5.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>SADASIBA BALIYARSINGH</h4>
+                <span>Backend Developer</span>
+                <span>Team Cordinator</span>
+                <p>Django Developer</p>
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href=""><i class="ri-instagram-fill"></i></a>
+                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="member d-flex align-items-start">
+              <div class="pic"><img src="/static/BBMS_APP/assets/img/team/team-6.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>DEEPTI BALA MISHRA</h4>
+                <span>H.O.D of MCA Department</span>
+                <p>Our Project Mentor</p>
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href=""><i class="ri-instagram-fill"></i></a>
+                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Team Section -->
+
+    <!-- ======= Our Skills Section ======= -->
+    <section id="skills" class="skills">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Our Skills</h2>
+          <p>Check our Our Skills</p>
+        </div>
+
+        <div class="row skills-content">
+
+          <div class="col-lg-6">
+
+            <div class="progress">
+              <span class="skill">HTML <i class="val">70%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+            <div class="progress">
+              <span class="skill">CSS <i class="val">80%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+            <div class="progress">
+              <span class="skill">JavaScript <i class="val">60%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-lg-6">
+
+            <div class="progress">
+              <span class="skill">Django <i class="val">50%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+            <div class="progress">
+              <span class="skill">Python <i class="val">85%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+            <div class="progress">
+              <span class="skill">Oracle <i class="val">70%</i></span>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Our Skills Section -->
+
+  </main><!-- End #main -->
+  
+{% endblock %}
+  

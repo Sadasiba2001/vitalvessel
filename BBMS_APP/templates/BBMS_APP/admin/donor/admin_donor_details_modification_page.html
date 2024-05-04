@@ -1,0 +1,117 @@
+{% extends 'BBMS_APP/admin/admin_base.html' %}
+{% block title %}Home - My Website{% endblock %}
+
+
+{% block content %}
+
+            <!-- Registration Form -->
+            <div class="container mt-5">
+                <div class="row justify-content-center">
+                    <div class="col-md-5">
+                        <div class="card registration-box" style="background-color: rgba(255, 255, 255, 0.1); border-radius: 15px;">
+                            <div class="card-body">
+                                <h4 class="text-center mb-3 text-light">Donor Registration</h4>
+                                
+                                <!-- Success/ Error Message -->
+                                {% if messages %}
+                                    {% for message in messages %}
+                                        {% if 'success_message' in message.tags %}
+                                        <div class="email-success-message">
+                                            <div class="alert alert-success" role="alert">
+                                                {{ message }}
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                        {% if 'email_not_exist_error' in message.tags %}
+                                        <div class="email-error-message">
+                                            <div class="alert alert-danger" role="alert">
+                                                {{ message }}
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                        {% if 'phone_not_exist_error' in message.tags %}
+                                        <div class="email-error-message">
+                                            <div class="alert alert-danger" role="alert">
+                                                {{ message }}
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                        {% if 'profile_not_exist_error' in message.tags %}
+                                        <div class="email-error-message">
+                                            <div class="alert alert-danger" role="alert">
+                                                {{ message }}
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                                <!-- Success/ Error Message -->
+                                <form method="post" action="{% url 'AdminDonorDetailsModificationPage' %}"
+                                    enctype="multipart/form-data">
+                                    {% csrf_token %}                
+                                    <!-- Place for selecting donor ID -->
+                                    <div class="form-group mb-1">
+                                        <label for="ID" class="mb-1 text-light">Donor ID:</label>
+                                        <select class="form-control form-control-sm" id="ID" name="ID" required>
+                                            <option value="">Select donor ids</option>
+                                            {% for record in donors %}
+                                                <option value="{{ record.donor_id }}">{{ record.donor_id }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>        
+                                    <!-- Place for writing donor name -->                 
+                                    <div class="form-group mb-1">
+                                        <label for="name" class="mb-1 text-light">Donor name:</label>
+                                        <input type="text" class="form-control form-control-sm" id="name"
+                                            name="name" placeholder="Write donor name">
+                                    </div>
+                                    <!-- Place for selecting donor gender -->
+                                    <div class="form-group mb-1">
+                                        <label for="gender" class="mb-1 text-light">Gender:</label>
+                                        <select class="form-control form-control-sm" id="gender" name="gender">
+                                            <option value="">Select gender</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                    <!-- Place for selecting donor blood_group -->
+                                    <div class="form-group mb-1">
+                                        <label for="blood_group" class="mb-1 text-light">Blood group:</label>
+                                        <select class="form-control form-control-sm" id="blood_group" name="blood_group">
+                                            <option value="">Select blood group</option>
+                                            {% for i in bloods %}
+                                            <option value="{{ i.blood_group_name }}">{{ i.blood_group_name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <!-- Place for selecting donor district -->
+                                    <div class="form-group mb-1">
+                                        <label for="district" class="mb-1 text-light">District:</label>
+                                        <select class="form-control form-control-sm" id="district" name="district">
+                                            <option value="">Select district</option>
+                                            {% for i in districts %}
+                                            <option value="{{ i.district_name }}">{{ i.district_name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <!-- Place for writing donor address -->
+                                    <div class="form-group mb-1">
+                                        <label for="address" class="mb-1 text-light">Address:</label>
+                                        <textarea class="form-control form-control-sm" id="address" name="address"
+                                            placeholder="Address" rows="3"></textarea>
+                                    </div>
+                                    <!-- Place for uploading donor profile photo -->
+                                    <div class="form-group mb-1">
+                                        <label for="profile_photo" class="mb-1 text-light">Profile photo:</label>
+                                        <input type="file" class="form-control-file form-control-sm" id="profile_photo"
+                                            name="profile_photo">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-block btn-submit">Update</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{% endblock %}

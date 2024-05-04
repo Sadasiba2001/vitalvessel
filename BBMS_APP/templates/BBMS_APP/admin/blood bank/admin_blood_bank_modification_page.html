@@ -1,0 +1,115 @@
+{% extends 'BBMS_APP/admin/admin_base.html' %}
+{% block title %}Home - My Website{% endblock %}
+
+
+{% block content %}
+
+            <!-- Registration Form -->
+            <div class="container mt-5">
+                <div class="row justify-content-center">
+                    <div class="col-md-5">
+                        <div class="card registration-box" style="background-color: rgba(255, 255, 255, 0.1); border-radius: 15px;">
+                            <div class="card-body">
+                                <h4 class="text-center mb-3 text-light">Blood Bank Registration</h4>
+                                
+                                <!-- Success/ Error Message -->
+                                {% if messages %}
+                                    {% for message in messages %}
+                                        {% if 'records_update' in message.tags %}
+                                        <div class="email-success-message">
+                                            <div class="alert alert-success" role="alert">
+                                                {{ message }}
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                        {% if 'email_not_exist_error' in message.tags %}
+                                        <div class="email-error-message">
+                                            <div class="alert alert-danger" role="alert">
+                                                {{ message }}
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                        {% if 'phone_not_exist_error' in message.tags %}
+                                        <div class="email-error-message">
+                                            <div class="alert alert-danger" role="alert">
+                                                {{ message }}
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                        {% if 'profile_not_exist_error' in message.tags %}
+                                        <div class="email-error-message">
+                                            <div class="alert alert-danger" role="alert">
+                                                {{ message }}
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                                <!-- Success/ Error Message -->
+                                <form method="post" action="{% url 'AdminBloodBankModificationPage' %}"
+                                    enctype="multipart/form-data">
+                                    {% csrf_token %}                
+                                    <!-- Place for selecting Blood Bank ID -->
+                                    <div class="form-group mb-1">
+                                        <label for="ID" class="mb-1 text-light">Blood Bank ID:</label>
+                                        <select class="form-control form-control-sm" id="ID" name="ID" required>
+                                            <option value="">Select Blood Bank ids</option>
+                                            {% for record in ids %}
+                                                <option value="{{ record.blood_bank_id }}">{{ record.blood_bank_id }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>        
+                                    <!-- Place for writing donor name -->                 
+                                    <div class="form-group mb-1">
+                                        <label for="name" class="mb-1 text-light">Blood Bank name:</label>
+                                        <input type="text" class="form-control form-control-sm" id="name"
+                                            name="name" placeholder="Write Blood Bank name">
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <label for="name" class="mb-1 text-light">District name:</label>
+                                        <select class="form-control form-control-sm" id="district_name" name="district_name" required>
+                                            <option value="">Select District Names</option>
+                                            {% for record in districts %}
+                                                <option value="{{ record.district_name }}">{{ record.district_name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <label for="name" class="mb-1 text-light">Phone Number:</label>
+                                        <input type="text" class="form-control form-control-sm" id="phonenumber"
+                                            name="phonenumber" placeholder="Write Phone Number">
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <label for="name" class="mb-1 text-light">Email ID:</label>
+                                        <input type="text" class="form-control form-control-sm" id="emailid"
+                                            name="emailid" placeholder="Write Email ID">
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <label for="name" class="mb-1 text-light">Address:</label>
+                                        <input type="text" class="form-control form-control-sm" id="address"
+                                            name="address" placeholder="Write Address">
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-primary btn-block btn-submit">Update</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                // Get the input fields
+                const bloodBankNameInput = document.getElementById('name');
+                const addressInput = document.getElementById('address');
+            
+                // Add event listeners to input fields
+                bloodBankNameInput.addEventListener('input', function () {
+                    this.value = this.value.toUpperCase();
+                });
+            
+                addressInput.addEventListener('input', function () {
+                    this.value = this.value.toUpperCase();
+                });
+            </script>
+{% endblock %}

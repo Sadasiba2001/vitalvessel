@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="D:/BBMS/db.sqlite3" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="125"/><column_width id="3" width="4529"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,29:mainBBMS_APP_customerorderdetails"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="SQL 1">-- Inserting records INSERT INTO BLOODBANK_RECORD table
+--cuttack blood bank details
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('CUTKLIFE01', 'LifeLine Blood Bank', 'ODCUTK07', 'SECTOR-1, CDA', '+911324567892', 'lifeline01@example.com');
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('CUTKVITA02', 'Vitality Blood Center', 'ODCUTK07', 'Canal Road Cuttack Gpo', '+911234567475', 'Vitality02@example.com');
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('CUTKREDC03', 'Red Cross Blood Services', 'ODCUTK07', 'Nayabazar Chauliaganj', '+911234523418', 'red.cross03@example.com');
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('CUTKLIFE04', 'LifeStream', 'ODCUTK07', 'Nayabazar Chauliaganj', '+911234523418', 'life04@example.com');
+--dhenkanala bloodbank details
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('DHEALBLOO05', 'BloodSource', 'ODDHEAL09', 'BADAHATA', '+911234567892', 'blood01@example.com');
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('DHEALBIOL06', 'BioLife Plasma Services', 'ODDHEAL09', 'PATTAMUNDAI', '+911234567892', 'bio.life02@example.com');
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('DHEALPULS07', 'Pulse Blood Bank', 'ODDHEAL09', 'BALANGADI BAZAR', '+911234567892', 'pulse03@example.com');
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('DHEALLIBE08', 'Liberty Blood Bank', 'ODDHEAL09', 'MANKARPUR', '+911234567892', 'liberty04@example.com');
+--ganjam blood bank details
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('GANGUNIT09', 'Unity Blood Center', 'ODGANG11', 'BELANGUNATH ROAD, BHANJA NAGAR', '+911234567892', 'unity01@example.com');
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('GANGHEAR10', 'Heartland Blood Centers', 'ODGANG11', 'KHALIKOTE', '+911234567892', 'heart.land02@example.com');
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('GANGGUAR11', 'Guardian Blood Bank', 'ODGANG11', 'BRAHMA NAGAR', '+911234567892', 'guardian03@example.com');
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('GANGHOPE12', 'Hope Blood Services', 'ODGANG11', 'BRAHMA NAGAR', '+911234567892', 'hope04@example.com');
+--jajpur blood bank details
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('JAJABEAC13', 'Beacon Blood Bank', 'ODJAGU12', 'NAYAGARH ROAD', '+912987456123', 'beacon01@example.com');
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('JAJASTAR14', 'Starlight Blood Bank', 'ODJAGU12', 'NH57 KHORDHA H O', '+911234567892', 'starlight02@example.com');
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('JAJAANGE15', 'Angelic Blood Services', 'ODJAGU12', 'MALAD, Sarbamangala Pally', '+911234567892', 'angelic03@example.com');
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('JAJASUNS16', 'Sunshine Blood Bank', 'ODJAGU12', 'DUMDUMA, BHUBANESWAR', '+911234567892', 'sunshine04@example.com');
+--jharsuguda blood bank details
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('JHAGSUNR17', 'Sunrise Blood Bank', 'ODJHAG14', 'PURI', '+911234567892', 'sunrise01@example.com');
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('JHAGANGE18', 'Angel Blood Center', 'ODJHAG14', 'KANAS', '+911234567891', 'angel02@example.com');
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('JHAGVITA19', 'Vitality Blood Bank', 'ODJHAG14', 'BRAHMAGIRI', '+911254567892', 'vitality03@example.com');
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('JHAGHORI20', 'Horizon Blood Bank', 'ODJHAG14', 'KAKATPUR', '+911234527892', 'horizon04@example.com');
+--kendrapada blood bank details
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('KENRNOBL21', 'Noble Blood Bank', 'ODKENR18', 'BADAHATA', '+911234567892', 'noble01@example.com');
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('KENRAURO22', 'Aurora Blood Center', 'ODKENR18', 'PATTAMUNDAI', '+911234567892', 'aurora02@example.com');
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('KENRELYS23', 'Elysian Blood Bank', 'ODKENR18', 'BALANGADI BAZAR', '+911234567892', 'elysian03@example.com');
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('KENRREVI24', 'Revival Blood Services', 'ODKENR18', 'MANKARPUR', '+911234567892', 'revival04@example.com');
+--khordha blood bank details
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('KHDAOASI25', 'Oasis Blood Center', 'ODKHDA19', 'NAYAGARH ROAD', '+912987456123', 'oasis01@example.com');
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('KHDASUMM26', 'Summit Blood Services', 'ODKHDA19', 'NH57 KHORDHA H O', '+911234567892', 'summit02@example.com');
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('KHDACASC27', 'Cascade Blood Bank', 'ODKHDA19', 'MALAD, Sarbamangala Pally', '+911234567892', 'cascade03@example.com');
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('KHDASAPP28', 'Sapphire Blood Bank', 'ODKHDA19', 'DUMDUMA, BHUBANESWAR', '+911234567892', 'sapphire04@example.com');
+--koraput blood bank details
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('KORKEVER29', 'Evergreen Blood Center', 'ODKORK20', 'BELANGUNATH ROAD, BHANJA NAGAR', '+911234567892', 'ever.green01@example.com');
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('KORKTRIN30', 'Trinity Blood Services', 'ODKORK20', 'KHALIKOTE', '+911234567892', 'trinity02@example.com');
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('KORKGRAT31', 'Gratitude Blood Bank', 'ODKORK20', 'BRAHMA NAGAR', '+911234567892', 'gratitude03@example.com');
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('KORKPACI32', 'Pacific Blood Services', 'ODKORK20', 'MALAD, Sarbamangala Pally', '+911235467892', 'pacific04@example.com');
+--rayagada blood bank details
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('RAYASTEL33', 'Stellar Blood Bank', 'ODRAYA27', 'SECTOR-1, CDA', '+911324567892', 'stellar01@example.com');
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('RAYAMEDS34', 'MedStar Blood Bank', 'ODRAYA27', 'Canal Road Cuttack Gpo', '+911234567475', 'medstar02@example.com');
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('RAYAPINN35', 'Pinnacle Blood Bank', 'ODRAYA27', 'Nayabazar Chauliaganj', '+911234523418', 'pinnacle03@example.com');
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('RAYASERE36', 'Serenity Blood Services', 'ODRAYA27', 'Nayabazar Chauliaganj', '+911234523418', 'serenity04@example.com');
+--puri blood bank details
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('PURUINFI37', 'Infinity Blood Bank', 'ODPURU26', 'PURI', '+911234567892', 'infinity01@example.com');
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('PURUTRAN38', 'Tranquil Blood Center', 'ODPURU26', 'KANAS', '+911234567891', 'tranquil02@example.com');
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('PURUCOMP39', 'Compass Blood Center', 'ODPURU26', 'BRAHMAGIRI', '+911254567892', 'compass03@example.com');
+INSERT INTO BLOODBANK_RECORD (blood_bank_id, blood_bank_name, district_id, address, mobile, email) VALUES ('PURUCRES40', 'Crescent Blood Bank', 'ODPURU26', 'KAKATPUR', '+911234527892', 'crescent04@example.com');
+
+COMMIT;
+</sql><current_tab id="0"/></tab_sql></sqlb_project>

@@ -1,0 +1,73 @@
+{% extends 'BBMS_APP/admin/admin_base.html' %}
+{% block title %}Home - My Website{% endblock %}
+
+{% block content %}
+
+<!-- Main Content -->
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    <!-- Heading and Filter Button -->
+    <div class="d-flex justify-content-between align-items-center mt-2">
+        <h1 class="mt-2 text-white bt">Blood Stock Details</h1>
+        <div class="col-md-3 mb-3">
+            <label for="searchInput"><strong class="text-white">Filter by</strong></label>
+            <input type="text" id="searchInput" class="form-control" placeholder="Write district/ blood bank name" onkeyup="searchFun()">
+        </div>
+    </div>
+
+    <!-- Table -->
+    <div class="table-responsive mt-4">
+        <table id="bloodStockTable" class="table table-bordered table-hover table-danger-border table-sm">
+            <thead class="text-white thead-dark">
+                <tr class="border">
+                    <th class="border">Blood Group ID</th>
+                    <th class="border">Blood Group Name</th>
+                    <th class="border">Donate To</th>
+                    <th class="border">Received From</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for rc in detail %}
+                <tr class="border">
+                    <!-- Display district name -->
+                    <td class="border text-white">{{ rc.blood_group_id }}</td>
+                    <!-- Display blood bank name -->
+                    <td class="border text-white">{{ rc.blood_group_name }}</td>
+                    <!-- Display blood group name -->
+                    <td class="border text-white">{{ rc.donated_blood_to }}</td>
+                    <!-- Display quantity -->
+                    <td class="border text-white">{{ rc.received_blood_from }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
+<!-- Main Content Ends Here-->
+
+<!-- Include jQuery and DataTables JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.6/js/jquery.dataTables.js"></script>
+
+<script>
+    const searchFun = () => {
+        let filter = document.getElementById('searchInput').value.toUpperCase(); // Searching input box
+        let myTable = document.getElementById('bloodStockTable'); // Blood bank details table
+        let tr = myTable.getElementsByTagName('tr');
+        for (var i = 0; i < tr.length; i++) {
+            let tdDistrict = tr[i].getElementsByTagName('td')[0]; // District name column
+            let tdBloodBank = tr[i].getElementsByTagName('td')[1]; // Blood bank name column
+            if (tdDistrict && tdBloodBank) {
+                let textValueDistrict = tdDistrict.textContent || tdDistrict.innerHTML;
+                let textValueBloodBank = tdBloodBank.textContent || tdBloodBank.innerHTML;
+                if (textValueDistrict.toUpperCase().indexOf(filter) > -1 || textValueBloodBank.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+
+
+{% endblock %}

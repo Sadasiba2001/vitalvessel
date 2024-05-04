@@ -1,0 +1,62 @@
+{% extends 'BBMS_APP/admin/admin_base.html' %}
+{% block title %}Home - My Website{% endblock %}
+
+
+{% block content %}
+
+            <!-- Main Content -->
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <!-- Table -->
+                <form method="post" action="#" autocomplete="off">
+                    {% csrf_token %}
+                    <h1 class="mt-2 text-white d-flex justify-content-between align-items-center bt">
+                        Doctor Details
+                        <button type="submit" name="delete" class="btn btn-danger">Delete</button>
+                    </h1>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-danger-border table-sm">
+                            <thead class="text-white thead-dark">
+                                <tr class="border">
+                                    <th class="border">Select</th>
+                                    <th class="border">ID</th>
+                                    <th class="border">Name</th>
+                                    <th class="border">Email</th>
+                                    <th class="border">Phone Number</th>
+                                    <th class="border">Gender</th>
+                                    <th class="border">Designation</th>
+                                    <th class="border">Address</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <form method="post" action="#" autocomplete="off">
+                                    {% csrf_token %}
+                                    <!-- Placeholder for table body content -->
+                                    {% for doc in doctors %}
+                                    <tr class="text-white">
+                                        <!-- Field for checkbox -->
+                                        <td><input type="checkbox" value="{{ doc.doctor_id }}" name="selected_records"></td>
+                                        <!-- Field for ID -->
+                                        <td>{{ doc.doctor_id }}</td>
+                                        <!-- Input field for name -->
+                                        <td>{{ doc.name }}</td>
+                                        <!-- Field for Email -->
+                                        <td>{{ doc.email }}</td>
+                                        <!-- Field for Phone Number -->
+                                        <td>{{ doc.phone }}</td>
+                                        <!-- Input field for gender -->
+                                        <td>{{ doc.gender }}</td>
+                                        <!-- Input field for blood group -->
+                                        <td>{{ doc.specialization }}</td>
+                                        <!-- Input field for address -->
+                                        <td>{{ doc.address }}</td>
+                                        <!-- Field for Registration date -->
+                                    </tr>
+                                    {% endfor %}
+                                </form>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </main>
+            <!-- Main Content Ends Here-->
+           {% endblock %}

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>VITALVESSEL</title>
+    <!-- Add your custom styles here if needed -->
+    <!-- Add your custom styles here if needed -->
+    <style>
+        body {
+            padding-top: 56px;
+            /* Adjust based on your navigation bar height */
+            margin: 0;
+        }
+
+        .video-container {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+            padding: 20px;
+            overflow-x: hidden;
+            overflow-y: auto;
+            background-color: #343a40;
+            width: 200px;
+            /* Adjust the width as needed */
+            transition: left 0.3s ease;
+            /* Add transition for smooth animation */
+        }
+
+        .sidebar.show {
+            left: 0;
+            /* Show the sidebar when 'show' class is applied */
+        }
+
+        .sidebar-box {
+            background-color: #343a40;
+            /* Background color */
+            border: 1px solid #555;
+            /* Border color */
+            padding: 10px;
+            /* Padding inside the box */
+            margin-bottom: 5px;
+            /* Spacing between boxes */
+            color: #fff;
+            /* Text color */
+            cursor: pointer;
+            /* Change cursor on hover */
+            /* margin-left: -10px; */
+        }
+
+        .sidebar-box:hover {
+            background-color: rgb(240, 13, 13);
+            /* Background color on hover */
+            color: #fff;
+            /* Text color */
+        }
+
+        .big-icon {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .big-icon i {
+            margin-right: 10px;
+            /* Add margin to separate icon from text */
+        }
+
+        .big-icon-text {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .sidebar-text {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+
+        .logout-link {
+            color: #fff;
+            text-align: center;
+            margin-top: auto;
+            display: block;
+            margin-top: 20px;
+            /* Adjust the margin as needed */
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+        }
+
+        /* Adjust layout for small screens */
+        @media (max-width: 850px) {
+            .sidebar {
+                width: 70px;
+                /* Adjust the width of the sidebar for small screens */
+            }
+
+            .big-icon-text {
+                display: none;
+                /* Hide the text in small screens */
+            }
+
+            .sidebar-box {
+                width: 40px;
+                /* Adjust the width of the sidebar-box for small screens */
+                padding: 5px;
+                /* Reduce padding for smaller sidebar-box */
+                position: relative;
+                /* Enable relative positioning for absolute text */
+                cursor: pointer;
+                /* Change cursor on hover */
+                margin-left: -10px;
+            }
+
+            .sidebar-box:hover {
+                background-color: rgb(240, 13, 13);
+                /* Change background color on hover */
+            }
+
+            .sidebar-box:hover .sidebar-text {
+                display: inline-block;
+                /* Display text when sidebar-box is hovered */
+            }
+
+            .sidebar-text {
+                display: none;
+                /* Hide text by default */
+                position: absolute;
+                /* Position text absolutely */
+                top: 50%;
+                /* Position text vertically centered */
+                left: 50px;
+                /* Position text to the right of the sidebar-box */
+                transform: translateY(-50%);
+                /* Adjust vertical alignment */
+            }
+
+            .logout-link.sidebar-box {
+                position: fixed;
+                /* Keep position relative for the logout button */
+            }
+
+            .logout-link .sidebar-text {
+                display: none;
+                /* Hide text by default */
+                position: absolute;
+                /* Position text absolutely */
+                top: 50%;
+                /* Position text vertically centered */
+                left: 60px;
+                /* Position text to the right of the logout button */
+                transform: translateY(-50%);
+                /* Adjust vertical alignment */
+            }
+
+            .logout-link:hover .sidebar-text {
+                display: inline-block;
+                /* Display text when logout button is hovered */
+            }
+
+
+            .main-content {
+                margin-left: 70px;
+                /* Add margin to avoid overlapping with the sidebar */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Video background -->
+    <div class="video-container">
+        <video autoplay loop muted>
+            <source src="/static/BBMS_APP/assets/Blood_1.mp4" type="video/mp4"> <!-- Replace with your video file -->
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Sidebar -->
+    <nav class="sidebar bg-dark">
+        <!-- Sidebar Content -->
+        <div class="big-icon">
+            <i class="fas fa-lungs heading"></i>
+            <span class="big-icon-text">VITALVESSEL</span>
+        </div>
+        <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+                <!-- Add your menu items here -->
+                <li class="nav-item">
+                    <a class="nav-link sidebar-box" href="{% url 'admin_home' %}">
+                        <i class="fas fa-home"></i>
+                        <span class="sidebar-text">Home</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link sidebar-box" href="{% url 'AdminDistrictHomePage' %}">
+                        <i class="fas fa-map"></i>
+                        <span class="sidebar-text">District Details</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link sidebar-box" href="{% url 'AdminBloodBankHomePage' %}">
+                        <i class="fas fa-map"></i>
+                        <span class="sidebar-text">Blood Bank</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link sidebar-box" href="{% url 'Admin_donorHomePage' %}">
+                        <i class="fas fa-user"></i>
+                        <span class="sidebar-text">Donor Details</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link sidebar-box" href="{% url 'AdminUserHomePage' %}">
+                        <i class="fas fa-users"></i>
+                        <span class="sidebar-text">User Details</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link sidebar-box" href="{% url 'AdminDoctorHomePage' %}">
+                        <i class="fas fa-user-md"></i>
+                        <span class="sidebar-text">Doctor Details</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link sidebar-box" href="{% url 'AdminBloodHomePage' %}">
+                        <i class="fas fa-tint"></i>
+                        <span class="sidebar-text">Blood Details</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <a class="nav-link logout-link sidebar-box" href="{% url 'index' %}"><i class="fas fa-sign-out-alt"></i><span
+                class="sidebar-text">Sign Out</span></a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid main-content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- Bootstrap JS and Popper.js (required for Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Custom JavaScript for displaying text on hover -->
+
+</body>
+
+</html>

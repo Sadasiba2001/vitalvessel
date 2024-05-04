@@ -1,0 +1,173 @@
+{% extends 'BBMS_APP/admin/admin_base.html' %}
+{% block title %}Home - My Website{% endblock %}
+
+
+{% block content %}
+
+<!-- Main Content -->
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    <!-- Input Table -->
+    <form method="post" action="{% url 'AdminDonorBloodDonationRegisterPage' %}" autocomplete="off">
+        {% csrf_token %}
+        <h3 class="mt-0 text-white d-flex justify-content-between align-items-center bt">Donation
+            Registration Form</h3>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover table-danger-border table-sm">
+                <thead class="text-white thead-dark">
+                    <tr class="border">
+                        <th class="border">Donor ID</th>
+                        <th class="border">Attended Doctor ID</th>
+                        <th class="border">Amount of Blood</th>
+                        <th class="border">Blood Camp District</th>
+                        <th class="border">Blood Camp Address</th>
+                        <th class="border">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Placeholder for table body content -->
+                    <tr class="text-white">
+                        <!-- Field for Donor ID -->
+                        <td>
+                            <select class="form-control form-control-sm" name="donor_ID" id="donor_ID" required>
+                                <option value="">Select donor IDs</option>
+                                {% for donor in donors %}
+                                <option value="{{ donor.donor_id }}">{{ donor.donor_id }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                        <!-- Field for Doctor ID -->
+                        <td>
+                            <select class="form-control form-control-sm" name="doctor_ID" id="doctor_ID" required>
+                                <option value="">Select doctor IDs</option>
+                                {% for doctor in doctors %}
+                                <option value="{{ doctor.doctor_id }}">{{ doctor.doctor_id }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                        <!-- Input field for Blood Amount -->
+                        <td>
+                            <select class="form-control form-control-sm" id="blood_amount" name="blood_amount" required>
+                                <option value="">Select blood amount</option>
+                                <option value="250 ml.">250 ml.</option>
+                                <option value="300 ml.">300 ml.</option>
+                                <option value="350 ml.">350 ml.</option>
+                            </select>
+                        </td>
+                        <!-- Input field for District -->
+                        <td>
+                            <select class="form-control form-control-sm" id="district" name="district">
+                                <option value="">Select district</option>
+                                {% for i in districts %}
+                                <option value="{{ i.district_name }}">{{ i.district_name }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                        <!-- Field for Address -->
+                        <td>
+                            <input type="text" class="form-control form-control-sm" id="address" name="address"
+                                placeholder="Write address" required>
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-primary" name="submit" id="submit">Submit</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+    <!-- Input Table Ends Here -->
+    <!-- Details Table -->
+    <h3 class="mt-1 text-white d-flex justify-content-between align-items-center bt">
+        Blood Donation Details
+    </h3>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover table-danger-border table-sm">
+            <thead class="text-white thead-dark">
+                <tr class="border">
+                    <th class="border">Donation ID</th>
+                    <th class="border">Donor ID</th>
+                    <th class="border">Doctor ID</th>
+                    <th class="border">Quantity</th>
+                    <th class="border">District</th>
+                    <th class="border">Address</th>
+                    <th class="border">Donation Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Placeholder for table body content -->
+                {% for don in donation reversed %}
+                <tr class="text-white">
+                    <!-- Field for checkbox -->
+                    <td>{{ don.donation_id }}</td>
+                    <!-- Field for ID -->
+                    <td>{{ don.donor_id }}</td>
+                    <!-- Input field for name -->
+                    <td>{{ don.doctor_id }}</td>
+                    <!-- Field for Email -->
+                    <td>{{ don.quantity }}</td>
+                    <!-- Field for Phone Number -->
+                    <td>{{ don.district }}</td>
+                    <!-- Input field for gender -->
+                    <td>{{ don.address }}</td>
+                    <!-- Input field for blood group -->
+                    <td>{{ don.donation_date }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- Details Table Ends Here -->
+</main>
+<!-- Main Content Ends Here-->
+<!-- Success/ Error Message -->
+{% if messages %}
+<div class="col-md-9 offset-md-3">
+    {% for message in messages %}
+    {% if 'records_delete' in message.tags %}
+    <div class="email-success-message">
+        <div class="alert alert-success" role="alert">
+            {{ message }}
+        </div>
+    </div>
+    {% endif %}
+    {% if 'record_update' in message.tags %}
+    <div class="email-success-message">
+        <div class="alert alert-success" role="alert">
+            {{ message }}
+        </div>
+    </div>
+    {% endif %}
+    {% if 'success_message' in message.tags %}
+    <div class="email-success-message">
+        <div class="alert alert-success" role="alert">
+            {{ message }}
+        </div>
+    </div>
+    {% endif %}
+    {% if 'no_record_delete' in message.tags %}
+    <div class="email-error-message">
+        <div class="alert alert-danger" role="alert">
+            {{ message }}
+        </div>
+    </div>
+    {% endif %}
+    {% if 'user_login_error' in message.tags %}
+    <div class="email-error-message">
+        <div class="alert alert-danger" role="alert">
+            {{ message }}
+        </div>
+    </div>
+    {% endif %}
+    {% if 'donor_login_error' in message.tags %}
+    <div class="email-error-message">
+        <div class="alert alert-danger" role="alert">
+            {{ message }}
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+{% endif %}
+<!-- Success/ Error Message -->
+
+{% endblock %}

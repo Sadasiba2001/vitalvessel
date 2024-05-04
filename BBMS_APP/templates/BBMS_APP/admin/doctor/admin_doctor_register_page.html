@@ -1,0 +1,122 @@
+{% extends 'BBMS_APP/admin/admin_base.html' %}
+{% block title %}Home - My Website{% endblock %}
+
+
+{% block content %}
+
+            <!-- Registration Form -->
+            <div class="container mt-5">
+                <div class="row justify-content-center">
+                    <div class="col-md-5">
+                        <div class="card registration-box" style="background-color: rgba(255, 255, 255, 0.1); border-radius: 15px;">
+                            <div class="card-body">
+                                <h4 class="text-center mb-3 text-light">Doctor Registration</h4>
+                                
+                                <!-- Success/ Error Message -->
+                                {% if messages %}
+                                    {% for message in messages %}
+                                        {% if 'record_submitted' in message.tags %}
+                                        <div class="email-success-message">
+                                            <div class="alert alert-success" role="alert">
+                                                {{ message }}
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                                <!-- Success/ Error Message -->
+
+                                <form method="post" action="{% url 'doctorRegisterPage' %}"
+                                    enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="form-group mb-1">
+                                        <label for="name" class="mb-1 text-light">Doctor name:</label>
+                                        <input type="text" class="form-control form-control-sm" id="doctor_name"
+                                            name="doctor_name" placeholder="Write doctor name" required>
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <label for="email" class="mb-1 text-light">Email:</label>
+                                        <input type="email" class="form-control form-control-sm" id="email"
+                                            name="email" placeholder="Email" required>
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <label for="text" class="mb-1 text-light">Phone number:</label>
+                                        <input type="text" class="form-control form-control-sm" id="number"
+                                            name="number" placeholder="Phone Number" required>
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <label for="gender" class="mb-1 text-light">Gender:</label>
+                                        <select class="form-control form-control-sm" id="gender" name="gender" required>
+                                            <option value="">Select gender</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <label for="designation" class="mb-1 text-light">Designations:</label>
+                                        <select class="form-control form-control-sm" id="designation" name="designation" required>
+                                            <option value="">Select Designation</option>
+                                            <option value="Doctor of Medicine">Doctor of Medicine</option>
+                                            <option value="Doctor of Osteopathic">Doctor of Osteopathic</option>
+                                            <option value="Pediatrician">Pediatrician</option>
+                                            <option value="Gynecologist">Gynecologist</option>
+                                            <option value="Psychiatrist">Psychiatrist</option>
+                                            <option value="Geriatrician">Geriatrician</option>
+                                            <option value="Orthopedist">Orthopedist</option>
+                                            <option value="Cardiologists">Cardiologists</option>
+                                            <option value="Dentist">Dentist</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <label for="address" class="mb-1 text-light">Address:</label>
+                                        <textarea class="form-control form-control-sm" id="address" name="address"
+                                            placeholder="Address" rows="3" required></textarea>
+                                    </div>
+                                    <div class="form-group mb-1">
+                                        <label for="profile_photo" class="mb-1 text-light">Profile photo:</label>
+                                        <input type="file" class="form-control-file form-control-sm" id="profile_photo"
+                                            name="profile_photo" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-block btn-submit">Register</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Registration Form end -->
+
+            <!-- Script for adding 'Dr.' prefix -->
+            <script>
+                function addDrPrefix(input) {
+                    // Retrieve the entered value
+                    let enteredValue = input.value.trim();
+            
+                    // Check if the entered value is not empty
+                    if (enteredValue !== "") {
+                        // Concatenate 'Dr.' with the entered value
+                        let prefixedValue = 'Dr. ' + enteredValue;
+            
+                        // Set the input field value to the concatenated value
+                        input.value = prefixedValue;
+                    }
+                }
+            </script>
+        <!-- Script for converting uppercase -->
+        <script>
+            // Get the input fields
+            const doctorNameInput = document.getElementById('doctor_name');
+            const addressInput = document.getElementById('address');
+        
+            // Add event listeners to input fields
+            doctorNameInput.addEventListener('input', function () {
+                this.value = this.value.toUpperCase();
+            });
+        
+            addressInput.addEventListener('input', function () {
+                this.value = this.value.toUpperCase();
+            });
+        </script>
+        
+        {% endblock %}

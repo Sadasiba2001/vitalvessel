@@ -1,0 +1,83 @@
+{% extends 'BBMS_APP/base.html' %}
+{% block title %}Home - My Website{% endblock %}
+
+
+{% block content %}
+
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h2><b>Doctor-Details</b></h2>
+            <ol>
+                <li><a href="{% url 'Home' %}">Home</a></li>
+                <li>Doctor Details</li>
+            </ol>
+        </div>
+
+    </div>
+</section>
+<!-- End Breadcrumbs -->
+
+<!-- Search Filter -->
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-3">
+            <label for="search" class="form-label">Filter By:</label>
+            <input type="text" id="searchInput" class="form-control" placeholder="Enter search keyword">
+        </div>
+    </div>
+</div>
+
+<!-- Table-1 content (Name and Specialization) -->
+<div class="container mt-4">
+    <div class="scroll-table">
+        <table id="doctorDetails" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Doctor Name</th>
+                    <th>Specialization</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Loop through the data1 and render it -->
+                {% for i in doctors %}
+                <tr>
+                    <td>{{ i.name }}</td>
+                    <td>{{ i.specialization }}</td>
+                    <td>{{ i.email }}</td>
+                    <td>{{ i.phone}}</td>
+                    <td>{{ i.address }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script>
+    const searchFun = () => {
+        let filter = document.getElementById('searchInput').value.toUpperCase(); // Searching input box
+        let myTable = document.getElementById('doctorDetails'); // Doctor details table
+        let tr = myTable.getElementsByTagName('tr');
+        for (var i = 0; i < tr.length; i++) {
+            let tdName = tr[i].getElementsByTagName('td')[0]; // Doctor Name column
+            let tdSpecialization = tr[i].getElementsByTagName('td')[1]; // Specialization column
+            if (tdName && tdSpecialization) {
+                let textValueName = tdName.textContent || tdName.innerText;
+                let textValueSpecialization = tdSpecialization.textContent || tdSpecialization.innerText;
+                let matchFound = textValueName.toUpperCase().indexOf(filter) > -1 || textValueSpecialization.toUpperCase().indexOf(filter) > -1;
+                tr[i].style.display = matchFound ? "" : "none";
+            }
+        }
+    }
+    // Attach search event listener to the input field
+    document.getElementById('searchInput').addEventListener('keyup', searchFun);
+</script>
+
+{% endblock %}
