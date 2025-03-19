@@ -127,7 +127,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'vital.company.vessel@gmail.com'
-EMAIL_HOST_PASSWORD = 'mvau ghjg tabr ksmn'
+EMAIL_HOST_PASSWORD = 'acoa wnuz ktdv aonf'
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'BBMS_APP/home/'
